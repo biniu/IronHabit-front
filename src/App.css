@@ -1,22 +1,82 @@
-.App {
+body {
+  background-color: rgb(35, 35, 35);
+  color: rgb(150, 150, 150);
+}
+
+.navigation {
+  padding: 1;
+  margin: 1;
+  height: 100vh;
+  background-color: rgb(25, 25, 25);
+  color: rgb(150, 150, 150);
+  border: 1px solid black;
+}
+
+.contentContainer {
+  padding: 1;
+  margin: 1;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.content {
+  padding: 0;
+  margin: 0;
+  height: 50vh;
+  background-color: rgb(35, 35, 35);
+  color: rgb(150, 150, 150);
+  border: 1px solid black;
+}
+
+.row {
+  margin-bottom: 0;
+}
+
+.rowTasks {
+  flex-direction: row;
+  columns: auto;
+  /* background-color: rgb(25, 25, 25); */
+}
+
+.rowHabit {
+  flex-direction: row;
+  columns: 1 auto;
+  background-color: rgb(25, 25, 25);
+}
+
+.button {
+  background-color: Transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: rgb(150, 150, 150);
+  padding: 5px 5px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.App-logo {
-  height: 40vmin;
+.Tasks {
+  padding: 0;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  /* border: 1px solid black; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.ProjectTable {
+  padding: 0;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  color: rgb(150, 150, 150);
+  border: none;
 }
 
-.App-link {
-  color: #09d3ac;
+.Hero-avatar {
+  width: 100%;
+  height: 100%;
 }
