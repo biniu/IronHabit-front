@@ -2,9 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Table } from 'reactstrap';
 
 class ProjectEntrance extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   render() {
     return (

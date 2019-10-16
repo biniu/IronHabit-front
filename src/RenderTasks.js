@@ -39,7 +39,8 @@ export function RenderTasks() {
     <TaskEntrance name="7" />,
   ]
 
-  return (<Container fluid>
+  return (
+  <Container fluid>
     <Row>
       <Col md="6"> Tasks </Col>
       <Col md="2">
@@ -60,5 +61,6 @@ export function RenderTasks() {
         </div>
       </Col>
     </Row>
-  </Container>);
+  </Container>
+  );
 }

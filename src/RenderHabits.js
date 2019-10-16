@@ -2,9 +2,6 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 class HabitEntrance extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
