@@ -5,7 +5,6 @@ import {
   Col,
   Navbar,
   Button,
-  Container
 } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +15,7 @@ import { RenderHabits } from './RenderHabits';
 import { RenderHero } from './RenderHero'
 import { RenderProjects } from './RenderProjects';
 import { RenderTasks } from './RenderTasks';
+import { RenderDailies } from './RenderDailies';
 
 
 class App extends React.Component {
@@ -25,25 +25,6 @@ class App extends React.Component {
       condition: false,
     };
     this.toggleSideBar = this.toggleSideBar.bind(this)
-  }
-
-
-  oldUI() {
-    return (
-      <Row>
-        <Col md="1" className="navigation"></Col>
-        <Col md="11" className="contentContainer">
-          <Row>
-            <Col md="6" className="content"> <RenderHero /> </Col>
-            <Col md="6" className="content"> <RenderHabits /> </Col>
-          </Row>
-          <Row>
-            <Col md="6" className="content"> <RenderTasks /> </Col>
-            <Col md="6" className="content"> <RenderProjects /> </Col>
-          </Row>
-        </Col>
-      </Row>
-    )
   }
 
   toggleSideBar() {
@@ -65,7 +46,7 @@ class App extends React.Component {
         <div id="page-content-wrapper">
           <Navbar bg="light" expand="lg">
             <Button onClick={this.toggleSideBar}>Menu</Button>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home"> Iron Habit </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             {/* <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
@@ -89,11 +70,12 @@ class App extends React.Component {
           <div class="container-fluid">
             <Row>
               <Col md="6" className="content"> <RenderHero /> </Col>
-              <Col md="6" className="content"> <RenderHabits /> </Col>
+              <Col md="6" className="content"> <RenderProjects /> </Col>
             </Row>
             <Row>
-              <Col md="6" className="content"> <RenderTasks /> </Col>
-              <Col md="6" className="content"> <RenderProjects /> </Col>
+              <Col md="4" className="content"> <RenderTasks /> </Col>
+              <Col md="4" className="content"> <RenderHabits /> </Col>
+              <Col md="4" className="content"> <RenderDailies /> </Col>
             </Row>
           </div>
 

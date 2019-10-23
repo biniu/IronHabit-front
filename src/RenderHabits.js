@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 class HabitEntrance extends React.Component {
 
@@ -26,7 +26,7 @@ export function RenderHabits() {
 
   return (<Container fluid>
     <Row>
-      <Col md="6"> Projects </Col>
+      <Col md="6"> Habits </Col>
       <Col md="2">
         <button className="button">Sort</button>
       </Col>
