@@ -31,7 +31,7 @@ class TaskEntrance extends React.Component {
         <label>
           <input className="taskCheckbox" type="checkbox"
             onChange={this.handleChange} />
-          Task {this.props.name}
+          {this.props.name}
         </label>
       </div>
     );
@@ -46,7 +46,7 @@ class GetTasksList extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      task: []
+      taskList: []
     };
   }
 
@@ -59,7 +59,7 @@ class GetTasksList extends React.Component {
           console.log(result)
           this.setState({
             isLoaded: true,
-            task: result
+            taskList: result
           });
         },
         (error) => {
@@ -73,23 +73,18 @@ class GetTasksList extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, task } = this.state;
-    console.log(task)
+    const { error, isLoaded, taskList } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (task === undefined) {
+    } else if (taskList === undefined) {
       return <div>Task is undefined</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <ul>
-          {task.map(item => (
-            <li key={item.name}>
-              {item.name}
-            </li>
-          ))}
-        </ul>
+        taskList.map((task) =>
+          <TaskEntrance name={task.name} />
+        )
       );
     }
   }
@@ -98,18 +93,6 @@ class GetTasksList extends React.Component {
 
 
 export function RenderTasks() {
-
-  const TaskList = [
-    <TaskEntrance name="1" />,
-    <TaskEntrance name="2" />,
-    <TaskEntrance name="3" />,
-    <TaskEntrance name="4" />,
-    <TaskEntrance name="5" />,
-    <TaskEntrance name="6" />,
-    <TaskEntrance name="7" />,
-    <TaskEntrance name="7" />,
-    <TaskEntrance name="7" />,
-  ]
 
   return (
     <Container fluid>

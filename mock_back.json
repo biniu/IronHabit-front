@@ -1,16 +1,214 @@
 {
+  "dailies": [
+    {
+      "id": 9,
+      "done_list": null,
+      "name": "Dailies 1",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:36:47.060975Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 10,
+      "done_list": null,
+      "name": "Dailies 2",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:36:51.312442Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 11,
+      "done_list": null,
+      "name": "Dailies 3",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:36:54.807971Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 12,
+      "done_list": null,
+      "name": "Dailies 3",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:36:58.655912Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
+    }
+  ],
+  "habit": [
+    {
+      "id": 5,
+      "name": "Habit 1",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:34:08.691655Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "reset": 1,
+      "positive_streak": 1,
+      "negative_streak": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 6,
+      "name": "Habit 2",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:34:15.128895Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "reset": 1,
+      "positive_streak": 1,
+      "negative_streak": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 7,
+      "name": "Habit 3",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:34:20.107792Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "reset": 1,
+      "positive_streak": 1,
+      "negative_streak": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 8,
+      "name": "Habit 3",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T20:34:28.126771Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "reset": 1,
+      "positive_streak": 1,
+      "negative_streak": 1,
+      "user": 1,
+      "project": 1
+    }
+  ],
+  "project": [
+    {
+      "name": "project 1",
+      "description": "",
+      "status": false,
+      "user": 1
+    }
+  ],
   "task": [
     {
       "id": 1,
-      "name": "task 1"
+      "name": "task 1",
+      "description": "",
+      "status": false,
+      "created": "2019-10-24T17:17:05.398493Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:17:00Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
     },
     {
       "id": 2,
-      "name": "task 2"
+      "name": "task 2",
+      "description": "",
+      "status": true,
+      "created": "2019-10-24T20:27:37.051696Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
     },
     {
       "id": 3,
-      "name": "task 3"
+      "name": "task 3",
+      "description": "",
+      "status": true,
+      "created": "2019-10-24T20:28:04.739005Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 4,
+      "name": "task 4",
+      "description": "",
+      "status": true,
+      "created": "2019-10-24T20:28:40.479049Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 5,
+      "name": "task 5",
+      "description": "",
+      "status": true,
+      "created": "2019-10-24T20:28:40.479049Z",
+      "deadline": "2019-10-24T17:16:58Z",
+      "estimation": "2019-10-24T17:16:58Z",
+      "difficulty": 1,
+      "priority": 1,
+      "experience": 1,
+      "user": 1,
+      "project": 1
     }
   ]
 }

@@ -2,12 +2,10 @@ import React from 'react';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 
 class ProjectEntrance extends React.Component {
-
-
   render() {
     return (
       <tr>
-        <td width="70%">Project {this.props.name}</td>
+        <td width="70%">{this.props.name}</td>
         <td width="15%">10%</td>
         <td width="15%">1/10</td>
       </tr>
@@ -15,16 +13,57 @@ class ProjectEntrance extends React.Component {
   }
 }
 
+class GetProjectList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      projectList: []
+    };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3001/project")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log("result")
+          console.log(result)
+          this.setState({
+            isLoaded: true,
+            projectList: result
+          });
+        },
+        (error) => {
+          console.log("error")
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, projectList } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (projectList === undefined) {
+      return <div>project is undefined</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        projectList.map((project) =>
+          <ProjectEntrance name={project.name} />
+        )
+      );
+    }
+  }
+}
+
 export function RenderProjects() {
-
-  const ProjectList = [
-    <ProjectEntrance name="1" />,
-    <ProjectEntrance name="2" />,
-    <ProjectEntrance name="3" />,
-    <ProjectEntrance name="4" />,
-    <ProjectEntrance name="5" />,
-  ]
-
   return (<Container fluid>
     <Row>
       <Col md="6"> Projects </Col>
@@ -43,7 +82,7 @@ export function RenderProjects() {
       <Col>
         <Table className="ProjectTable">
           <tbody>
-            {ProjectList}
+            <GetProjectList />
           </tbody>
         </Table>
       </Col>

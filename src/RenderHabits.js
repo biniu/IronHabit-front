@@ -14,6 +14,56 @@ class HabitEntrance extends React.Component {
   }
 }
 
+class GetHabitList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      habitList: []
+    };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3001/habit")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log("result")
+          console.log(result)
+          this.setState({
+            isLoaded: true,
+            habitList: result
+          });
+        },
+        (error) => {
+          console.log("error")
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, habitList } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (habitList === undefined) {
+      return <div>habit is undefined</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        habitList.map((habit) =>
+          <HabitEntrance name={habit.name} />
+        )
+      );
+    }
+  }
+}
+
 export function RenderHabits() {
 
   const HabitList = [
@@ -41,7 +91,7 @@ export function RenderHabits() {
     <Row>
       <Col>
         <div className="rowHabit">
-          {HabitList}
+          <GetHabitList />
         </div>
       </Col>
     </Row>
