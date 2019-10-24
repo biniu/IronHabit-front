@@ -38,6 +38,65 @@ class TaskEntrance extends React.Component {
   }
 }
 
+
+
+class GetTasksList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      task: []
+    };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3001/task")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log("result")
+          console.log(result)
+          this.setState({
+            isLoaded: true,
+            task: result
+          });
+        },
+        (error) => {
+          console.log("error")
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, task } = this.state;
+    console.log(task)
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (task === undefined) {
+      return <div>Task is undefined</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <ul>
+          {task.map(item => (
+            <li key={item.name}>
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  }
+}
+
+
+
 export function RenderTasks() {
 
   const TaskList = [
@@ -54,18 +113,6 @@ export function RenderTasks() {
 
   return (
     <Container fluid>
-      {/* <Row>
-        <Col md="6"> Tasks </Col>
-        <Col md="2">
-          <button className="button">Sort</button>
-        </Col>
-        <Col md="2">
-          <button className="button">Filter</button>
-        </Col>
-        <Col md="2">
-          <button className="button">Tags</button>
-        </Col>
-      </Row> */}
       <Navbar bg="dark" expand="lg">
         <Navbar.Brand href="#home"> Tasks </Navbar.Brand>
         <Navbar.Collapse>
@@ -91,7 +138,8 @@ export function RenderTasks() {
       <Row>
         <Col className="Tasks">
           <div className="rowTasks">
-            {TaskList}
+            <GetTasksList />
+            {/* {TaskList} */}
           </div>
         </Col>
       </Row>

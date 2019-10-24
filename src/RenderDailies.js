@@ -1,5 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Navbar, Button } from 'react-bootstrap';
+import {
+    Container,
+    Row,
+    Col,
+} from 'react-bootstrap';
 
 class DailyEntrance extends React.Component {
     constructor(props) {

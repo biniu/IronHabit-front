@@ -67,7 +67,7 @@ class App extends React.Component {
             </Navbar.Collapse> */}
           </Navbar>
 
-          <div class="container-fluid">
+          <div className="container-fluid">
             <Row>
               <Col md="6" className="content"> <RenderHero /> </Col>
               <Col md="6" className="content"> <RenderProjects /> </Col>
