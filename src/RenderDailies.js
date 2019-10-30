@@ -12,9 +12,7 @@ class DailyEntrance extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    console.log(this.props.name)
-  }
+  handleChange(event) { }
 
   render() {
     return (
@@ -44,15 +42,12 @@ class GetDailiesList extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log("result")
-          console.log(result)
           this.setState({
             isLoaded: true,
             dailies: result
           });
         },
         (error) => {
-          console.log("error")
           this.setState({
             isLoaded: true,
             error

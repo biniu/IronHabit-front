@@ -28,15 +28,12 @@ class GetProjectList extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log("result")
-          console.log(result)
           this.setState({
             isLoaded: true,
             projectList: result
           });
         },
         (error) => {
-          console.log("error")
           this.setState({
             isLoaded: true,
             error
