@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import logo from './logo.svg';
+import logo from '../Misc/logo.svg';
 
 export function RenderHero() {
   return (

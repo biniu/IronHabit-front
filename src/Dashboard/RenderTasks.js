@@ -9,9 +9,9 @@ import {
   NavItem,
 } from 'react-bootstrap';
 
-import { GetTagMenu } from './TagMenu';
-import { GetFilterDropdown } from './FilterDropdown'
-import { GetSortDropdown } from './SortDropdown'
+import { GetTagMenu } from '../TagMenu';
+import { GetFilterDropdown } from '../FilterDropdown'
+import { GetSortDropdown } from '../SortDropdown'
 
 class TaskEntrance extends React.Component {
   constructor(props) {
