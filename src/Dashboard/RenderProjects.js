@@ -24,22 +24,22 @@ class GetProjectList extends React.Component {
   }
 
   componentDidMount() {
-    // fetch("http://localhost:3001/project")
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         projectList: result
-    //       });
-    //     },
-    //     (error) => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
+    fetch("http://localhost:3001/project")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            projectList: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
   }
 
   render() {
