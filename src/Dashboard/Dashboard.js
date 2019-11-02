@@ -1,12 +1,20 @@
 import React,{Component} from 'react'
-
+import {Link} from 'react-router-dom'
 
 import {
     Row,
     Col,
     Navbar,
     Button,
+    Nav,
+    NavDropdown,
+    Form,
+    InputGroup,
+    FormControl
   } from 'react-bootstrap';
+
+import { faHome,faBars, faCogs, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { RenderHabits } from './RenderHabits';
 import { RenderHero } from './RenderHero'
@@ -36,16 +44,22 @@ class Dashboard extends Component {
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div className="sidebar-heading">Start Bootstrap </div>
           <div className="list-group list-group-flush">
-            <a href="#" className="list-group-item list-group-item-action">Dashboard</a>
+            {/* <a href="#" className="list-group-item list-group-item-action">Dashboard</a> */}
+            <Link to ="/dashboard"><div className="list-group-item list-group-item-action">Dashboard</div></Link>
+            <Link to ="/projects"><div className="list-group-item list-group-item-action">Projects</div></Link>
+            <Link to ="/tasks"><div className="list-group-item list-group-item-action">Tasks</div></Link>
+            <Link to ="/daily"><div className="list-group-item list-group-item-action">Dailies</div></Link>
+            <Link to ="/settings"><div className="list-group-item list-group-item-action">Settings</div></Link>
+            {/* <a href="#" className="list-group-item list-group-item-action">Dashboard</a> */}
           </div>
         </div>
 
         <div id="page-content-wrapper">
           <Navbar bg="light" expand="lg">
-            <Button onClick={this.toggleSideBar}>Menu</Button>
-            <Navbar.Brand href="#home"> Iron Habit </Navbar.Brand>
+            <Button onClick={this.toggleSideBar}><FontAwesomeIcon icon={faBars}/></Button>
+            <Navbar.Brand href="#home"> <FontAwesomeIcon icon={faHome}/>Iron Habit </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            {/* <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">Link</Nav.Link>
@@ -58,10 +72,21 @@ class Dashboard extends Component {
                 </NavDropdown>
               </Nav>
               <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-success">Search</Button>
+              {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
+              {/* <Button variant="outline-success"><FontAwesomeIcon icon={faSearch}/></Button> */}
+              <InputGroup className="mb">
+                <InputGroup.Prepend>
+                <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch}/></InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="basic-addon1"
+                />
+              </InputGroup>
+              <Button ><FontAwesomeIcon icon={faCogs}/></Button>
             </Form>
-            </Navbar.Collapse> */}
+            </Navbar.Collapse>
           </Navbar>
           <div className="container-fluid">
             <Row>
