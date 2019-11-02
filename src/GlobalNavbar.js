@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import {
   Navbar,
   Button,
@@ -17,7 +17,8 @@ export class GlobalNavbar extends Component {
     super(props);
     this.state = {
       condition: false,
-      content: props.content
+      content: props.content,
+      side_bar_content: props.side_bar_content
     };
     this.toggleSideBar = this.toggleSideBar.bind(this)
   }
@@ -30,18 +31,13 @@ export class GlobalNavbar extends Component {
 
   render() {
     const content = this.state.content
+    const side_bar_content = this.state.side_bar_content
     return (
       <div id="wrapper" className={(this.state.condition ? 'd-flex' : 'd-flex toggled')} >
         <div className="bg-light border-right" id="sidebar-wrapper">
           <div className="sidebar-heading">Start Bootstrap </div>
           <div className="list-group list-group-flush">
-            {/* <a href="#" className="list-group-item list-group-item-action">Dashboard</a> */}
-            <Link to="/dashboard"><div className="list-group-item list-group-item-action">Dashboard</div></Link>
-            <Link to="/projects"><div className="list-group-item list-group-item-action">Projects</div></Link>
-            <Link to="/tasks"><div className="list-group-item list-group-item-action">Tasks</div></Link>
-            <Link to="/daily"><div className="list-group-item list-group-item-action">Dailies</div></Link>
-            <Link to="/settings"><div className="list-group-item list-group-item-action">Settings</div></Link>
-            {/* <a href="#" className="list-group-item list-group-item-action">Dashboard</a> */}
+            {side_bar_content}
           </div>
         </div>
 

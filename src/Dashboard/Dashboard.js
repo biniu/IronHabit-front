@@ -12,6 +12,7 @@ import { RenderTasks } from './RenderTasks';
 import { RenderDailies } from './RenderDailies';
 
 import { GlobalNavbar } from '../GlobalNavbar'
+import { DashboardSideBar } from './DashboardSideBar'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -40,8 +41,9 @@ class Dashboard extends Component {
         <Col md="4" className="content"> <RenderDailies /> </Col>
       </Row>
     </div>
+    const side_bar_content = <DashboardSideBar />
     return (
-      <GlobalNavbar content={content} />
+      <GlobalNavbar content={content} side_bar_content={side_bar_content} />
     )
   }
 
