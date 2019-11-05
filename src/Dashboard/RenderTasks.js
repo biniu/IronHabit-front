@@ -12,12 +12,8 @@ import {
   Dropdown
 } from 'react-bootstrap';
 
-import { faSort, faFilter, faSearch, faTags, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
+import { faFilter, faSearch, faTags, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-import { GetTagMenu } from '../TagMenu';
-import { GetFilterDropdown } from '../FilterDropdown'
-import { GetSortDropdown } from '../SortDropdown'
 
 class TaskEntrance extends React.Component {
   constructor(props) {
@@ -55,8 +51,7 @@ export class RenderTasks extends React.Component {
     }
   }
 
-  componentWillMount() {
-    console.log("componentWillMount")
+  componentDidMount() {
     fetch("http://localhost:3001/task")
       .then(res => res.json())
       .then(
@@ -105,18 +100,18 @@ export class RenderTasks extends React.Component {
               </NavItem> */}
               <InputGroup className="mb">
                 <InputGroup.Prepend>
-                <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch}/></InputGroup.Text>
+                  <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="basic-addon1"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="basic-addon1"
                 />
               </InputGroup>
               <NavItem>
                 <Dropdown>
                   <Dropdown.Toggle>
-                    <FontAwesomeIcon icon={faSortAmountDownAlt}/>
+                    <FontAwesomeIcon icon={faSortAmountDownAlt} />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="#/action">Action</Dropdown.Item>
@@ -129,7 +124,7 @@ export class RenderTasks extends React.Component {
               <NavItem>
                 <Dropdown>
                   <Dropdown.Toggle>
-                    <FontAwesomeIcon icon={faFilter}/>
+                    <FontAwesomeIcon icon={faFilter} />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="#/action">Action</Dropdown.Item>
@@ -142,7 +137,7 @@ export class RenderTasks extends React.Component {
               <NavItem>
                 <Dropdown>
                   <Dropdown.Toggle>
-                    <FontAwesomeIcon icon={faTags}/>
+                    <FontAwesomeIcon icon={faTags} />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <Dropdown.Item href="#/action">Action</Dropdown.Item>

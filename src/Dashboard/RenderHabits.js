@@ -62,15 +62,6 @@ class GetHabitList extends React.Component {
 }
 
 export function RenderHabits() {
-
-  const HabitList = [
-    <HabitEntrance name="1" />,
-    <HabitEntrance name="2" />,
-    <HabitEntrance name="3" />,
-    <HabitEntrance name="4" />,
-    <HabitEntrance name="5" />,
-  ]
-
   return (<Container fluid>
     <Row>
       <Col md="6"> Habits </Col>
