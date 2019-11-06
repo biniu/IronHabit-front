@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { GlobalNavbar } from '../GlobalNavbar'
-import { RenderTasks } from '../Dashboard/RenderTasks';
+import { RenderTasks } from './RenderTasks';
 import { TasksSideBar } from './TasksSideBar'
 class Tasks extends Component {
   render() {

@@ -19,6 +19,17 @@ class TaskEntrance extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      name: "",
+      description: "",
+      priority: "",
+      difficulty: "",
+      deadline: "",
+      created: "",
+      estimation: "",
+      project: ""
+    }
+
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -26,13 +37,49 @@ class TaskEntrance extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>
-          <input className="taskCheckbox" type="checkbox"
-            onChange={this.handleChange} />
-          {this.props.name}
-        </label>
-      </div>
+      <Container fluid>
+        <Row className="TaskRow">
+          <Col className="TaskColCheckBox">
+            {/* TODO(biniu) icons to find */}
+            {/* TODO(biniu) put it in middle of heigh  */}
+            <label>
+              <input className="taskCheckbox" type="checkbox"
+                onChange={this.handleChange} />
+            </label>
+          </Col>
+          <Col className="TaskColPriority">
+            {/* TODO(biniu) icons to find */}
+            {/* TODO(biniu) put it in middle of heigh  */}
+            <div className="TaskEntrance">{this.props.priority}</div>
+          </Col>
+          <Col>
+            <Row>
+              <Col>{this.props.name}</Col>
+              <Col className="TaskColTime">
+                deadline
+              </Col>
+              <Col className="TaskColTime">
+                estimation
+              </Col>
+              <Col className="TaskColTime">
+                {/* TODO(biniu) think about pomodore */}
+                logged
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                {this.props.description}
+              </Col>
+            </Row>
+          </Col>
+          <Col className="TaskColProject">
+            project name {this.props.project}
+          </Col>
+          <Col className="TaskColTags">
+            TAGS
+          </Col>
+        </Row>
+      </Container >
     );
   }
 }
@@ -72,7 +119,19 @@ export class RenderTasks extends React.Component {
   }
 
   renderTask = task => {
-    return <TaskEntrance name={task.name} />
+    return <TaskEntrance
+      name={task.name}
+      description={task.description}
+
+      priority={task.priority}
+      difficulty={task.difficulty}
+
+      deadline={task.deadline}
+      created={task.created}
+      estimation={task.estimation}
+
+      project={task.project}
+    />
   }
 
   onchange = e => {
@@ -150,7 +209,6 @@ export class RenderTasks extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-
 
         <Row>Add a ToDo</Row>
         <Row>

@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RenderHabits } from './RenderHabits';
 import { RenderHero } from './RenderHero'
 import { RenderProjects } from './RenderProjects';
-import { RenderTasks } from './RenderTasks';
+import { RenderTasks } from '../Tasks/RenderDashboardTasks';
 import { RenderDailies } from './RenderDailies';
 
 import { GlobalNavbar } from '../GlobalNavbar'
