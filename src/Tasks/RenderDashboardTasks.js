@@ -115,6 +115,10 @@ export class RenderTasks extends React.Component {
     this.setState({ search: e.target.value });
   };
 
+  addTask = task => {
+    console.log("Add task")
+  }
+
   render() {
     const { search } = this.state;
     const filteredTasks = this.state.tasks.filter(task => {
@@ -187,7 +191,11 @@ export class RenderTasks extends React.Component {
           </Navbar.Collapse>
         </Navbar>
 
-        <Row>Add a ToDo</Row>
+        <Row>
+          <div onClick={this.addTask}>
+            Add a ToDo
+          </div>
+        </Row>
         <Row>
           <Col className="Tasks">
             <div className="rowTasks">

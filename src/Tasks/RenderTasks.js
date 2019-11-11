@@ -9,11 +9,14 @@ import {
   NavItem,
   InputGroup,
   FormControl,
-  Dropdown
+  Dropdown,
+  Form,
+
 } from 'react-bootstrap';
 
 import { faFilter, faSearch, faTags, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Moment from 'moment';
 
 class TaskEntrance extends React.Component {
   constructor(props) {
@@ -56,10 +59,10 @@ class TaskEntrance extends React.Component {
             <Row>
               <Col>{this.props.name}</Col>
               <Col className="TaskColTime">
-                deadline
+                {Moment(this.props.deadline).format('d MMM')}
               </Col>
               <Col className="TaskColTime">
-                estimation
+                {Moment(this.props.estimation).format('d MMM')}
               </Col>
               <Col className="TaskColTime">
                 {/* TODO(biniu) think about pomodore */}
@@ -85,6 +88,7 @@ class TaskEntrance extends React.Component {
 }
 
 
+
 export class RenderTasks extends React.Component {
   constructor(props) {
     super(props);
@@ -95,27 +99,15 @@ export class RenderTasks extends React.Component {
       tasks: [],
       tasksToShow: [],
       search: ""
+
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    fetch("http://localhost:3001/task")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            tasks: result,
-            tasksToShow: result
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    this.getData();
   }
 
   renderTask = task => {
@@ -138,7 +130,56 @@ export class RenderTasks extends React.Component {
     this.setState({ search: e.target.value });
   };
 
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit = async (event) => {
+    console.log('A name was submitted: ' + this.state.value);
+
+    event.preventDefault();
+    const response = await fetch('http://localhost:3001/task', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: this.state.value,
+        // secondParam: 'yourOtherValue',
+      })
+    })
+
+    console.log("DUPA")
+    this.getData();
+
+  }
+
+
+  getData = () => {
+    console.log("getData")
+    fetch("http://localhost:3001/task")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            tasks: result,
+            tasksToShow: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+
   render() {
+    console.log("render")
     const { search } = this.state;
     const filteredTasks = this.state.tasks.filter(task => {
       return task.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
@@ -210,7 +251,16 @@ export class RenderTasks extends React.Component {
           </Navbar.Collapse>
         </Navbar>
 
-        <Row>Add a ToDo</Row>
+
+        <Row>
+          <Form onSubmit={this.handleSubmit}>
+            <label>
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </Form>
+        </Row>
+
         <Row>
           <Col className="Tasks">
             <div className="rowTasks">
