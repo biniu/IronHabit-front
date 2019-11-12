@@ -17,6 +17,7 @@ import {
 import { faFilter, faSearch, faTags, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Moment from 'moment';
+import Popup from "reactjs-popup";
 
 class TaskEntrance extends React.Component {
   constructor(props) {
@@ -177,6 +178,54 @@ export class RenderTasks extends React.Component {
       )
   }
 
+  addTaskPopUp() {
+    console.log("addTaskPopUp");
+    return (
+      <div>
+        <div>
+          <h2>Create task</h2>
+        </div>
+        <div>
+          <p>Title</p>
+          <label>
+            <input type="text" />
+          </label>
+        </div>
+        <div>
+          <p>Description</p>
+          <label>
+            <input type="text" />
+          </label>
+        </div>
+        <div>
+          <p>Priority</p>
+        </div>
+        <div>
+          <p>Difficulty</p>
+        </div>
+        <div>
+          <div>
+            Estimation
+            ???
+          </div>
+          <div>
+            Deadline
+            ???
+          </div>
+        </div>
+        <div>
+          Tags
+        </div>
+        <div>
+          Project
+        </div>
+        <div>
+          SubTasks
+          !!!TODO!!!
+        </div>
+      </div >
+    )
+  }
 
   render() {
     console.log("render")
@@ -184,6 +233,8 @@ export class RenderTasks extends React.Component {
     const filteredTasks = this.state.tasks.filter(task => {
       return task.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
+
+
 
     return (
       <Container fluid>
@@ -251,6 +302,11 @@ export class RenderTasks extends React.Component {
           </Navbar.Collapse>
         </Navbar>
 
+        <Popup modal trigger={<button>Create task</button>}>
+          <div>
+            {this.addTaskPopUp()}
+          </div>
+        </Popup>
 
         <Row>
           <Form onSubmit={this.handleSubmit}>
