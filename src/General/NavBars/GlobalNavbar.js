@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+
 import {
   Navbar,
   Button,
@@ -9,7 +9,12 @@ import {
   FormControl
 } from 'react-bootstrap';
 
-import { faHome, faBars, faCogs, faSearch } from '@fortawesome/free-solid-svg-icons'
+import {
+  faHome,
+  faBars,
+  faCogs,
+  faSearch
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class GlobalNavbar extends Component {

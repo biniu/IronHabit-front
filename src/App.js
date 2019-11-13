@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import Dashboard from './Dashboard/Dashboard'
-import Projects from './Projects/Projects'
-import Tasks from './Tasks/Tasks'
-import Habits from './Habits/Habits'
-import Dailies from './Dailies/Dailies'
-import LoginPage from './LoginPage/login'
+
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
 
+// Import all sub sites
+// Main sites
+import LoginPage from './LoginPage/login'
+import Dashboard from './Dashboard/Dashboard'
+
+// Sub sites
+import Projects from './SubSites/Projects/Projects'
+import Tasks from './SubSites/Tasks/Tasks'
+import Habits from './SubSites/Habits/Habits'
+import Dailies from './SubSites/Dailies/Dailies'
+
+// Import CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+
+// Import local CSS files
+import './css/App.css';
 import './css/sidebar.css'
-
-
-
 
 class App extends Component {
   render() {
