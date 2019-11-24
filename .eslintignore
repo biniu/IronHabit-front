@@ -1,0 +1,8 @@
+#Ignoring this file
+/root/.eslintignore
+
+#Ignoring node modules
+/root/node_modules
+
+#Ignoring serviceWorker since no changes done in it
+serviceWorker.js
