@@ -19,76 +19,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Moment from 'moment';
 import Popup from "reactjs-popup";
 
-class TaskEntrance extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: "",
-      description: "",
-      priority: "",
-      difficulty: "",
-      deadline: "",
-      created: "",
-      estimation: "",
-      project: ""
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) { }
-
-  render() {
-    return (
-      <Container fluid>
-        <Row className="TaskRow">
-          <Col className="TaskColCheckBox">
-            {/* TODO(biniu) icons to find */}
-            {/* TODO(biniu) put it in middle of heigh  */}
-            <label>
-              <input className="taskCheckbox" type="checkbox"
-                onChange={this.handleChange} />
-            </label>
-          </Col>
-          <Col className="TaskColPriority">
-            {/* TODO(biniu) icons to find */}
-            {/* TODO(biniu) put it in middle of heigh  */}
-            <div className="TaskEntrance">{this.props.priority}</div>
-          </Col>
-          <Col>
-            <Row>
-              <Col>{this.props.name}</Col>
-              <Col className="TaskColTime">
-                {Moment(this.props.deadline).format('d MMM')}
-              </Col>
-              <Col className="TaskColTime">
-                {Moment(this.props.estimation).format('d MMM')}
-              </Col>
-              <Col className="TaskColTime">
-                {/* TODO(biniu) think about pomodore */}
-                logged
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                {this.props.description}
-              </Col>
-            </Row>
-          </Col>
-          <Col className="TaskColProject">
-            project name {this.props.project}
-          </Col>
-          <Col className="TaskColTags">
-            TAGS
-          </Col>
-        </Row>
-      </Container >
-    );
-  }
-}
-
-
+import { TaskEntrance } from "./TaskEntrance"
+import { TaskCreateForm } from "./TaskCreateForm"
 
 export class RenderTasks extends React.Component {
   constructor(props) {
@@ -98,7 +30,7 @@ export class RenderTasks extends React.Component {
       error: null,
       isLoaded: false,
       tasks: [],
-      tasksToShow: [],
+      projects: [],
       search: ""
 
     }
@@ -151,7 +83,6 @@ export class RenderTasks extends React.Component {
       })
     })
 
-    console.log("DUPA")
     this.getData();
 
   }
@@ -166,7 +97,23 @@ export class RenderTasks extends React.Component {
           this.setState({
             isLoaded: true,
             tasks: result,
-            tasksToShow: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+
+    fetch("http://localhost:3001/project")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            projects: result,
           });
         },
         (error) => {
@@ -178,54 +125,7 @@ export class RenderTasks extends React.Component {
       )
   }
 
-  addTaskPopUp() {
-    console.log("addTaskPopUp");
-    return (
-      <div>
-        <div>
-          <h2>Create task</h2>
-        </div>
-        <div>
-          <p>Title</p>
-          <label>
-            <input type="text" />
-          </label>
-        </div>
-        <div>
-          <p>Description</p>
-          <label>
-            <input type="text" />
-          </label>
-        </div>
-        <div>
-          <p>Priority</p>
-        </div>
-        <div>
-          <p>Difficulty</p>
-        </div>
-        <div>
-          <div>
-            Estimation
-            ???
-          </div>
-          <div>
-            Deadline
-            ???
-          </div>
-        </div>
-        <div>
-          Tags
-        </div>
-        <div>
-          Project
-        </div>
-        <div>
-          SubTasks
-          !!!TODO!!!
-        </div>
-      </div >
-    )
-  }
+
 
   render() {
     console.log("render")
@@ -304,7 +204,7 @@ export class RenderTasks extends React.Component {
 
         <Popup modal trigger={<button>Create task</button>}>
           <div>
-            {this.addTaskPopUp()}
+            {<TaskCreateForm />}
           </div>
         </Popup>
 
