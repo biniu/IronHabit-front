@@ -8,69 +8,52 @@ import {
 } from 'react-bootstrap';
 
 
-const FormErrors = ({ formErrors }) =>
-  <div className='formErrors'>
-    {Object.keys(formErrors).map((fieldName, i) => {
-      if (formErrors[fieldName].length > 0) {
-        return (
-          <p key={i}>{fieldName} {formErrors[fieldName]}</p>
-        )
-      } else {
-        return '';
-      }
-    })}
-  </div>
-
 export class TaskQuickCreateForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      formErrors: { email: '', password: '' },
-      emailValid: false,
-      passwordValid: false,
-      formValid: false
+      task_name: '',
+      task_priority: 5,
+      task_project: 1,
     }
+
   }
 
   handleUserInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    this.setState({ [name]: value },
-      () => { this.validateField(name, value) });
+
+    this.setState({ [name]: value });
+
+    console.log(name)
+    console.log(value)
   }
 
-  validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
-    let emailValid = this.state.emailValid;
-    let passwordValid = this.state.passwordValid;
+  createTask = async (e) => {
 
-    switch (fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-        break;
-      case 'password':
-        passwordValid = value.length >= 6;
-        fieldValidationErrors.password = passwordValid ? '' : ' is too short';
-        break;
-      default:
-        break;
+    console.log(this.state.task_name)
+    console.log(this.state.task_priority)
+    console.log(this.state.task_project)
+
+    e.preventDefault();
+    if (this.state.task_name.length > 0) {
+      const response = await fetch('http://localhost:3001/task', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.state.task_name,
+          priority: this.state.task_priority,
+          project: this.state.task_project,
+
+        })
+      })
+
+      // this.setState({ task_name: "" });
+      this.props.refreshTasks();
     }
-    this.setState({
-      formErrors: fieldValidationErrors,
-      emailValid: emailValid,
-      passwordValid: passwordValid
-    }, this.validateForm);
-  }
-
-  validateForm() {
-    this.setState({ formValid: this.state.emailValid && this.state.passwordValid });
-  }
-
-  errorClass(error) {
-    return (error.length === 0 ? '' : 'has-error');
   }
 
   render() {
@@ -78,71 +61,62 @@ export class TaskQuickCreateForm extends Component {
       <Container>
         <Form >
           <Form.Group as={Row}>
-
-            {/* <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}> */}
-            {/* <Form.Label>Email address</Form.Label> */}
-            <Form.Control type="text" rows="12" required name="email"
+            <Form.Control type="text" rows="12" required name="task_name"
               placeholder="Task name"
-              value={this.state.email}
+              value={this.state.task_name}
               onChange={this.handleUserInput}
             />
-            {/* </div> */}
           </Form.Group>
 
-          <Form.Group as={Row} inline>
-
+          <Form.Group as={Row} inline style={{ float: 'left' }}>
             <Form.Label >
-              <button type="submit" className="btn btn-primary"
-                disabled={!this.state.formValid}>
+              <button className="btn btn-primary"
+                onClick={this.createTask}
+              >
                 Create task
               </button>
             </Form.Label>
-
-
-            <Form.Label >
-              <Form.Control as="select">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </Form.Control>
-            </Form.Label>
-
-            <Form.Label >
-              <Form.Control as="select">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </Form.Control>
-            </Form.Label>
-
-            <Form.Label >
-              <Form.Control as="select">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </Form.Control>
-            </Form.Label>
-
-            <Form.Label >
-              <Form.Control type="text"
-                placeholder=""
-              // value={this.state.email}
-              // onChange={this.handleUserInput}
-              />
-            </Form.Label>
-
           </Form.Group>
 
-          <Form.Group as={Row} inline>
-            <div>
-              <FormErrors formErrors={this.state.formErrors} />
-            </div>
+          <Form.Group as={Row} inline style={{ float: 'right' }}>
+
+            <Form.Label >
+              <Form.Control as="select" name="task_priority"
+                value={this.state.task_priority}
+                onChange={this.handleUserInput}
+              >
+                <option value="5">Priority</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Control>
+            </Form.Label>
+
+            <Form.Label >
+              <Form.Control as="select" name="task_project"
+                value={this.state.task_project}
+                onChange={this.handleUserInput}
+              >
+                <option value="5">Project</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Control>
+            </Form.Label>
+
+            <Form.Label  >
+              <Form.Control as="select">
+                <option>Tag</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Form.Control>
+            </Form.Label>
+
           </Form.Group>
         </Form>
       </Container>

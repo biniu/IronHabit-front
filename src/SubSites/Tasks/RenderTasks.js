@@ -210,13 +210,7 @@ export class RenderTasks extends React.Component {
         </Popup> */}
 
         <Row>
-          {<TaskQuickCreateForm />}
-          {/* <Form onSubmit={this.handleSubmit}>
-            <label>
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </Form> */}
+          {<TaskQuickCreateForm refreshTasks={this.getData} />}
         </Row>
 
         <Row>
