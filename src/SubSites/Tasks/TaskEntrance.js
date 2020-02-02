@@ -66,7 +66,7 @@ export class TaskEntrance extends React.Component {
             </Row>
           </Col>
           <Col className="TaskColProject">
-            project name {this.props.project}
+            {this.props.project}
           </Col>
           <Col className="TaskColTags">
             TAGS

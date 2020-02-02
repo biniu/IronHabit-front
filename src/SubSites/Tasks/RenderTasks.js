@@ -45,6 +45,16 @@ export class RenderTasks extends React.Component {
   }
 
   renderTask = task => {
+
+    let project_name = "";
+    if (this.state.projects[task.project]) {
+      project_name = this.state.projects[task.project]["name"]
+    }
+
+    // const projectName = this.state.projects.filter(project => {
+    //   return project.name;
+    // })
+
     return <TaskEntrance
       name={task.name}
       description={task.description}
@@ -56,7 +66,7 @@ export class RenderTasks extends React.Component {
       created={task.created}
       estimation={task.estimation}
 
-      project={task.project}
+      project={project_name}
     />
   }
 
@@ -80,7 +90,6 @@ export class RenderTasks extends React.Component {
       },
       body: JSON.stringify({
         name: this.state.value,
-        // secondParam: 'yourOtherValue',
       })
     })
 
@@ -90,7 +99,6 @@ export class RenderTasks extends React.Component {
 
 
   getData = () => {
-    console.log("getData")
     fetch("http://localhost:3001/task")
       .then(res => res.json())
       .then(
@@ -129,7 +137,6 @@ export class RenderTasks extends React.Component {
 
 
   render() {
-    console.log("render")
     const { search } = this.state;
     const filteredTasks = this.state.tasks.filter(task => {
       return task.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;

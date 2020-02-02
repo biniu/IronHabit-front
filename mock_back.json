@@ -133,19 +133,29 @@
   ],
   "project": [
     {
-      "name": "project 1",
+      "id": 0,
+      "name": "dummy project",
       "description": "",
       "status": false,
       "user": 1
     },
     {
-      "name": "project 2",
+      "id": 1,
+      "name": "conquer the world",
       "description": "",
       "status": false,
       "user": 1
     },
     {
-      "name": "project 3",
+      "id": 2,
+      "name": "duapaaa",
+      "description": "",
+      "status": false,
+      "user": 1
+    },
+    {
+      "id": 3,
+      "name": "create proper mocks",
       "description": "",
       "status": false,
       "user": 1
@@ -221,10 +231,6 @@
       "experience": 1,
       "user": 1,
       "project": 1
-    },
-    {
-      "name": "asd",
-      "id": 6
     }
   ]
 }
