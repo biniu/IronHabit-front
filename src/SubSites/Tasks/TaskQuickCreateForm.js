@@ -24,17 +24,9 @@ export class TaskQuickCreateForm extends Component {
     const value = e.target.value;
 
     this.setState({ [name]: value });
-
-    console.log(name)
-    console.log(value)
   }
 
   createTask = async (e) => {
-
-    console.log(this.state.task_name)
-    console.log(this.state.task_priority)
-    console.log(this.state.task_project)
-
     e.preventDefault();
     if (this.state.task_name.length > 0) {
       const response = await fetch('http://localhost:3001/task', {
@@ -51,7 +43,6 @@ export class TaskQuickCreateForm extends Component {
         })
       })
 
-      // this.setState({ task_name: "" });
       this.props.refreshTasks();
     }
   }
