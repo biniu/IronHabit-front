@@ -42,6 +42,8 @@ export class TaskQuickCreateForm extends Component {
       task_priority: 5,
       task_project: 1,
       task_deadline: '',
+
+      // projectList: this.props.projectList,
     }
 
   }
@@ -52,6 +54,29 @@ export class TaskQuickCreateForm extends Component {
 
   handleDeadline = (deadline) => {
     this.setState({ ["task_deadline"]: deadline });
+  }
+
+  projectEntrance = (project) => {
+    return <option value={project.id}>{project.name}</option>
+  }
+
+  listProjects = () => {
+    const optionList = this.props.projectList.map(project => {
+      return this.projectEntrance(project);
+    })
+    return (
+      <Form.Control as="select" name="task_project"
+        value={this.state.task_project}
+        onChange={this.handleUserInput}
+      >
+        {optionList}
+        {/* <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option> */}
+
+      </Form.Control>
+    )
   }
 
   createTask = async (e) => {
@@ -101,20 +126,11 @@ export class TaskQuickCreateForm extends Component {
 
             <Form.Label >
               {<PickDate handleDate={this.handleDeadline} />}
-              {/* <Form.Control as="select" name="task_deadline"
-                value={this.state.task_deadline}
-                onChange={this.handleUserInput}
-              >
-                <option value="5">deadline</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </Form.Control> */}
             </Form.Label>
 
             <Form.Label >
-              <Form.Control as="select" name="task_project"
+              {this.listProjects()}
+              {/* <Form.Control as="select" name="task_project"
                 value={this.state.task_project}
                 onChange={this.handleUserInput}
               >
@@ -123,7 +139,7 @@ export class TaskQuickCreateForm extends Component {
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-              </Form.Control>
+              </Form.Control> */}
             </Form.Label>
 
             <Form.Label >

@@ -217,7 +217,10 @@ export class RenderTasks extends React.Component {
         </Popup> */}
 
         <Row>
-          {<TaskQuickCreateForm refreshTasks={this.getData} />}
+          {<TaskQuickCreateForm
+            refreshTasks={this.getData}
+            projectList={this.state.projects}
+          />}
         </Row>
 
         <Row>
