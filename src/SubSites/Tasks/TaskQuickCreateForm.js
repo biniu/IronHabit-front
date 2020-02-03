@@ -7,6 +7,32 @@ import {
   Form,
 } from 'react-bootstrap';
 
+import DatePicker from "react-datepicker";
+import Moment from 'moment';
+
+import "react-datepicker/dist/react-datepicker.css";
+
+class PickDate extends React.Component {
+  state = {
+    startDate: new Date()
+  };
+
+  handleChange = date => {
+    this.props.handleDate(date)
+    this.setState({
+      startDate: date
+    });
+  };
+
+  render() {
+    return (
+      <DatePicker
+        selected={this.state.startDate}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 
 export class TaskQuickCreateForm extends Component {
   constructor(props) {
@@ -15,15 +41,17 @@ export class TaskQuickCreateForm extends Component {
       task_name: '',
       task_priority: 5,
       task_project: 1,
+      task_deadline: '',
     }
 
   }
 
   handleUserInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
-    this.setState({ [name]: value });
+  handleDeadline = (deadline) => {
+    this.setState({ ["task_deadline"]: deadline });
   }
 
   createTask = async (e) => {
@@ -39,7 +67,7 @@ export class TaskQuickCreateForm extends Component {
           name: this.state.task_name,
           priority: this.state.task_priority,
           project: this.state.task_project,
-
+          deadline: this.state.task_deadline,
         })
       })
 
@@ -72,17 +100,17 @@ export class TaskQuickCreateForm extends Component {
           <Form.Group as={Row} inline style={{ float: 'right' }}>
 
             <Form.Label >
-              <Form.Control as="select" name="task_priority"
-                value={this.state.task_priority}
+              {<PickDate handleDate={this.handleDeadline} />}
+              {/* <Form.Control as="select" name="task_deadline"
+                value={this.state.task_deadline}
                 onChange={this.handleUserInput}
               >
-                <option value="5">Priority</option>
-                <option value="1">1</option>
+                <option value="5">deadline</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-              </Form.Control>
+              </Form.Control> */}
             </Form.Label>
 
             <Form.Label >
@@ -98,6 +126,34 @@ export class TaskQuickCreateForm extends Component {
               </Form.Control>
             </Form.Label>
 
+            <Form.Label >
+              <Form.Control as="select" name="task_difficulty"
+                value={this.state.task_difficulty}
+                onChange={this.handleUserInput}
+              >
+                <option value="5">Difficulty</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Control>
+            </Form.Label>
+
+            <Form.Label >
+              <Form.Control as="select" name="task_priority"
+                value={this.state.task_priority}
+                onChange={this.handleUserInput}
+              >
+                <option value="5">Priority</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Control>
+            </Form.Label>
+            {/*
             <Form.Label  >
               <Form.Control as="select">
                 <option>Tag</option>
@@ -106,7 +162,7 @@ export class TaskQuickCreateForm extends Component {
                 <option>4</option>
                 <option>5</option>
               </Form.Control>
-            </Form.Label>
+            </Form.Label> */}
 
           </Form.Group>
         </Form>

@@ -49,7 +49,7 @@ export class TaskEntrance extends React.Component {
             <Row>
               <Col>{this.props.name}</Col>
               <Col className="TaskColTime">
-                {Moment(this.props.deadline).format('d MMM')}
+                {Moment(this.props.deadline).format('DD/MM')}
               </Col>
               <Col className="TaskColTime">
                 {Moment(this.props.estimation).format('d MMM')}
