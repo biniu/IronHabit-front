@@ -134,14 +134,23 @@ export class RenderTasks extends React.Component {
       )
   }
 
-
+  // sortMyArray(sortBy) {
+  //   return myArray.sort((a, b) => {
+  //     if (sortBy === 'start_date') {
+  //       return a.start_date < b.start_date ? 1 : -1;
+  //     }
+  //   });
+  // };
 
   render() {
     const { search } = this.state;
-    const filteredTasks = this.state.tasks.filter(task => {
+    let tasksToShow = this.state.tasks.filter(task => {
       return task.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
 
+    tasksToShow = tasksToShow.sort((a, b) => {
+      return a.possition > b.possition ? 1 : -1;
+    });
 
 
     return (
@@ -226,7 +235,7 @@ export class RenderTasks extends React.Component {
         <Row>
           <Col className="Tasks">
             <div className="rowTasks">
-              {filteredTasks.map(Task => {
+              {tasksToShow.map(Task => {
                 return this.renderTask(Task);
               })}
             </div>
