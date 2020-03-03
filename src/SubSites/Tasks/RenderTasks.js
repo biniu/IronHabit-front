@@ -17,11 +17,12 @@ import {
 import { faFilter, faSearch, faTags, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Moment from 'moment';
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
 
 import { TaskEntrance } from "./TaskEntrance"
 import { TaskCreateForm } from "./TaskCreateForm"
 import { TaskQuickCreateForm } from "./TaskQuickCreateForm"
+
 
 export class RenderTasks extends React.Component {
   constructor(props) {
@@ -51,10 +52,6 @@ export class RenderTasks extends React.Component {
       project_name = this.state.projects[task.project]["name"]
     }
 
-    // const projectName = this.state.projects.filter(project => {
-    //   return project.name;
-    // })
-
     return <TaskEntrance
       name={task.name}
       description={task.description}
@@ -68,6 +65,7 @@ export class RenderTasks extends React.Component {
 
       project={project_name}
     />
+
   }
 
   onchange = e => {
@@ -134,14 +132,6 @@ export class RenderTasks extends React.Component {
       )
   }
 
-  // sortMyArray(sortBy) {
-  //   return myArray.sort((a, b) => {
-  //     if (sortBy === 'start_date') {
-  //       return a.start_date < b.start_date ? 1 : -1;
-  //     }
-  //   });
-  // };
-
   render() {
     const { search } = this.state;
     let tasksToShow = this.state.tasks.filter(task => {
@@ -159,13 +149,6 @@ export class RenderTasks extends React.Component {
           <Navbar.Brand href="#home"> Tasks </Navbar.Brand>
           <Navbar.Collapse>
             <Nav className="ml-auto">
-              {/* <NavItem>
-                <input
-                  label="Search Country"
-                  icon="search"
-                  onChange={this.onchange}
-                />
-              </NavItem> */}
               <InputGroup className="mb">
                 <InputGroup.Prepend>
                   <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
