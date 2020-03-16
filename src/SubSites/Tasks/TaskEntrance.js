@@ -91,31 +91,51 @@ export class TaskEntrance extends React.Component {
 
     const popUpContent = (close) => (
       <div className="modal_1">
-        <a className="close" onClick={close}>
-                    &times;
-        </a>
-        <div className="header"> Modal Title </div>
+        {/* <a className="close" onClick={close}>*/}
+        {/*            &times;*/}
+        {/* </a>*/}
+        <div className="header"> Quest details </div>
         <div className="content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <h3>{this.props.name}</h3>
+          <h6>{this.props.description}</h6>
+
+          <h4>{this.props.project}</h4>
+
+          <h4>Priority</h4>
+          <h4>Difficulty</h4>
+
+          <h4>Deadline</h4>
+          <h4>Estimated time</h4>
+          <h4>Log time</h4>
+          <h4>Tags</h4>
         </div>
         <div className="actions">
-          <Popup
-            trigger={<button className="button"> Trigger </button>}
-            position="top center"
-            closeOnDocumentClick
-          >
-            <span>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </span>
-          </Popup>
-          <button
-            className="button"
+          {/* STYLE alligment to left and right*/}
+          <button className="button"
             onClick={() => {
-              console.log('modal closed ');
+              console.log('Cancel ');
               close();
             }}
           >
-                      close modal
+            Cancel
+          </button>
+
+          <button className="button"
+            onClick={() => {
+              console.log('Update ');
+              close();
+            }}
+          >
+            Update
+          </button>
+
+          <button className="button"
+            onClick={() => {
+              console.log('Delete ');
+              close();
+            }}
+          >
+            Delete
           </button>
         </div>
       </div>
