@@ -10,18 +10,17 @@ import {
   InputGroup,
   FormControl,
   Dropdown,
-  Form,
 
 } from 'react-bootstrap';
 
-import { faFilter, faSearch, faTags, faSortAmountDownAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faFilter, faSearch, faTags, faSortAmountDownAlt} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Moment from 'moment';
 // import Popup from "reactjs-popup";
 
-import { TaskEntrance } from "./TaskEntrance"
-import { TaskCreateForm } from "./TaskCreateForm"
-import { TaskQuickCreateForm } from "./TaskQuickCreateForm"
+import {TaskEntrance} from './TaskEntrance';
+import {TaskCreateForm} from './TaskCreateForm';
+import {TaskQuickCreateForm} from './TaskQuickCreateForm';
 
 
 export class RenderTasks extends React.Component {
@@ -33,9 +32,9 @@ export class RenderTasks extends React.Component {
       isLoaded: false,
       tasks: [],
       projects: [],
-      search: ""
+      search: '',
 
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,11 +44,10 @@ export class RenderTasks extends React.Component {
     this.getData();
   }
 
-  renderTask = task => {
-
-    let project_name = "";
+  renderTask = (task) => {
+    let project_name = '';
     if (this.state.projects[task.project]) {
-      project_name = this.state.projects[task.project]["name"]
+      project_name = this.state.projects[task.project]['name'];
     }
 
     return <TaskEntrance
@@ -64,16 +62,15 @@ export class RenderTasks extends React.Component {
       estimation={task.estimation}
 
       project={project_name}
-    />
-
+    />;
   }
 
-  onchange = e => {
-    this.setState({ search: e.target.value });
+  onchange = (e) => {
+    this.setState({search: e.target.value});
   };
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({value: event.target.value});
   }
 
   handleSubmit = async (event) => {
@@ -88,53 +85,52 @@ export class RenderTasks extends React.Component {
       },
       body: JSON.stringify({
         name: this.state.value,
-      })
-    })
+      }),
+    });
 
     this.getData();
-
   }
 
 
   getData = () => {
-    fetch("http://localhost:3001/task")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            tasks: result,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    fetch('http://localhost:3001/task')
+        .then((res) => res.json())
+        .then(
+            (result) => {
+              this.setState({
+                isLoaded: true,
+                tasks: result,
+              });
+            },
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error,
+              });
+            },
+        );
 
-    fetch("http://localhost:3001/project")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            projects: result,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    fetch('http://localhost:3001/project')
+        .then((res) => res.json())
+        .then(
+            (result) => {
+              this.setState({
+                isLoaded: true,
+                projects: result,
+              });
+            },
+            (error) => {
+              this.setState({
+                isLoaded: true,
+                error,
+              });
+            },
+        );
   }
 
   render() {
-    const { search } = this.state;
-    let tasksToShow = this.state.tasks.filter(task => {
+    const {search} = this.state;
+    let tasksToShow = this.state.tasks.filter((task) => {
       return task.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
 
@@ -218,7 +214,7 @@ export class RenderTasks extends React.Component {
         <Row>
           <Col className="Tasks">
             <div className="rowTasks">
-              {tasksToShow.map(Task => {
+              {tasksToShow.map((Task) => {
                 return this.renderTask(Task);
               })}
             </div>
