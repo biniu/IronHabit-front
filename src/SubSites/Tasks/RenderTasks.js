@@ -16,6 +16,8 @@ import {
 import {faFilter, faSearch, faTags, faSortAmountDownAlt} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Moment from 'moment';
+
+
 // import Popup from "reactjs-popup";
 
 import {TaskEntrance} from './TaskEntrance';
@@ -45,12 +47,13 @@ export class RenderTasks extends React.Component {
   }
 
   renderTask = (task) => {
-    let project_name = '';
+    let projectName = '';
     if (this.state.projects[task.project]) {
-      project_name = this.state.projects[task.project]['name'];
+      projectName = this.state.projects[task.project]['name'];
     }
 
     return <TaskEntrance
+      tID={task.id}
       name={task.name}
       description={task.description}
 
@@ -61,7 +64,9 @@ export class RenderTasks extends React.Component {
       created={task.created}
       estimation={task.estimation}
 
-      project={project_name}
+      project={projectName}
+
+      refreshTasks={this.getData}
     />;
   }
 

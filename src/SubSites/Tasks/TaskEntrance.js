@@ -15,9 +15,27 @@ export class TaskEntrance extends React.Component {
     this.props = props;
   }
 
+  updateTask = async (e) => {
+    e.preventDefault();
+    if (Number.isInteger(this.props.tID)) {
+      const response = await fetch('http://localhost:3001/task/' + this.props.tID, {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.props.name + " DONE!",
+        })
+      })
+
+      this.props.refreshTasks();
+    }
+  }
+
   render = () => {
     const darkBackground = {
-      background: 'black',
+      background: 'grey',
       margin: '5px',
     };
 
@@ -145,7 +163,8 @@ export class TaskEntrance extends React.Component {
 
       <div className="row" style={darkBackground}>
         <div className="col-md-1">
-          <a href="#" className="btn btn-secondary" type="button">Button</a>
+          <div className={'checkbox'} onClick={this.updateTask}></div>
+          {/*<input type="checkbox" ></input>*/}
         </div>
 
         <Popup trigger={taskContent} modal closeOnDocumentClick>
