@@ -1,13 +1,34 @@
 import React from 'react';
 
-import {
-  Container,
-} from 'react-bootstrap';
-
-import Moment from 'moment';
+import {Container, Form, Row} from 'react-bootstrap';
 import Popup from 'reactjs-popup';
-import './modal.css';
 
+import moment from 'moment';
+
+import './modal.css';
+import DatePicker from "react-datepicker";
+
+class PickDate extends React.Component {
+  state = {
+    startDate: new Date()
+  };
+
+  handleChange = date => {
+    this.props.handleDate(date)
+    this.setState({
+      startDate: date
+    });
+  };
+
+  render() {
+    return (
+      <DatePicker
+        selected={this.state.startDate}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 
 export class TaskEntrance extends React.Component {
   constructor(props) {
@@ -17,24 +38,29 @@ export class TaskEntrance extends React.Component {
 
   updateTask = async (e) => {
     e.preventDefault();
-    if (Number.isInteger(this.props.tID)) {
-      const response = await fetch('http://localhost:3001/task/' + this.props.tID, {
+    if (Number.isInteger(this.props.taskDetails.id)) {
+      const response = await fetch('http://localhost:3001/task/' + this.props.taskDetails.id, {
         method: 'PATCH',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: this.props.name + " DONE!",
-        })
-      })
+          status: !this.props.taskDetails.status,
+        }),
+      });
 
       this.props.refreshTasks();
     }
   }
 
   render = () => {
-    const darkBackground = {
+    const questToDo = {
+      background: 'black',
+      margin: '5px',
+    };
+
+    const questDone = {
       background: 'grey',
       margin: '5px',
     };
@@ -43,38 +69,38 @@ export class TaskEntrance extends React.Component {
       <div className="row">
         <div className="col-md-1">
           <span className="badge badge-default">
-            {this.props.priority}
+            {this.props.taskDetails.priority}
           </span>
         </div>
         <div className="col-md-9">
           <div className="row">
             <div className="col-md-8">
               <h4 className="text-left">
-                {this.props.name}
+                {this.props.taskDetails.name}
               </h4>
             </div>
             <div className="col-md-4">
               <div className="row">
                 <div className="col-md-6">
                   <span className="badge badge-default">
-                    deadline
+                    D {moment(this.props.taskDetails.deadline).format('D M')}
                   </span>
                 </div>
                 <div className="col-md-6">
                   <span className="badge badge-default">
-                    created
+                    C {moment(this.props.taskDetails.created).format('D M')}
                   </span>
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-6">
                   <span className="badge badge-default">
-                    estimation
+                    estimation???
                   </span>
                 </div>
                 <div className="col-md-6">
                   <span className="badge badge-default">
-                    logged
+                    logged???
                   </span>
                 </div>
               </div>
@@ -83,7 +109,7 @@ export class TaskEntrance extends React.Component {
           <div className="row">
             <div className="col-md-12">
               <h6>
-                {this.props.description}
+                {this.props.taskDetails.description}
               </h6>
             </div>
           </div>
@@ -107,64 +133,64 @@ export class TaskEntrance extends React.Component {
       </div>
     </div>;
 
-    const popUpContent = (close) => (
-      <div className="modal_1">
-        {/* <a className="close" onClick={close}>*/}
-        {/*            &times;*/}
-        {/* </a>*/}
-        <div className="header"> Quest details </div>
-        <div className="content">
-          <h3>{this.props.name}</h3>
-          <h6>{this.props.description}</h6>
+    const popUpContent = (close) => {
+      return (
+        <div className="modal_1">
+          <div className="header"> Quest details</div>
+          <div className="content">
+            <h3>{this.props.taskDetails.name}</h3>
+            <h6>{this.props.taskDetails.description}</h6>
 
-          <h4>{this.props.project}</h4>
+            <h4>{this.props.project}</h4>
 
-          <h4>Priority</h4>
-          <h4>Difficulty</h4>
+            <h4>Priority</h4>
+            <h4>Difficulty</h4>
 
-          <h4>Deadline</h4>
-          <h4>Estimated time</h4>
-          <h4>Log time</h4>
-          <h4>Tags</h4>
+            <h4>Deadline</h4>
+            <h4>Estimated time</h4>
+            <h4>Log time</h4>
+            <h4>Tags</h4>
+
+
+          </div>
+          <div className="actions">
+            {/* STYLE alligment to left and right*/}
+            <button className="button"
+              onClick={() => {
+                console.log('Cancel ');
+                close();
+              }}
+            >
+              Cancel
+            </button>
+
+            <button className="button"
+              onClick={() => {
+                console.log('Update ');
+                close();
+              }}
+            >
+              Update
+            </button>
+
+            <button className="button"
+              onClick={() => {
+                console.log('Delete ');
+                close();
+              }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
-        <div className="actions">
-          {/* STYLE alligment to left and right*/}
-          <button className="button"
-            onClick={() => {
-              console.log('Cancel ');
-              close();
-            }}
-          >
-            Cancel
-          </button>
-
-          <button className="button"
-            onClick={() => {
-              console.log('Update ');
-              close();
-            }}
-          >
-            Update
-          </button>
-
-          <button className="button"
-            onClick={() => {
-              console.log('Delete ');
-              close();
-            }}
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    );
+      );
+    };
 
     return <Container fluid >
 
-      <div className="row" style={darkBackground}>
+      <div className="row" style={this.props.taskDetails.status ? questToDo : questDone}>
         <div className="col-md-1">
           <div className={'checkbox'} onClick={this.updateTask}></div>
-          {/*<input type="checkbox" ></input>*/}
         </div>
 
         <Popup trigger={taskContent} modal closeOnDocumentClick>

@@ -53,17 +53,19 @@ export class RenderTasks extends React.Component {
     }
 
     return <TaskEntrance
-      tID={task.id}
-      name={task.name}
-      description={task.description}
+      // tID={task.id}
+      // name={task.name}
+      // description={task.description}
+      // status={task.status}
+      //
+      // priority={task.priority}
+      // difficulty={task.difficulty}
+      //
+      // deadline={task.deadline}
+      // created={task.created}
+      // estimation={task.estimation}
 
-      priority={task.priority}
-      difficulty={task.difficulty}
-
-      deadline={task.deadline}
-      created={task.created}
-      estimation={task.estimation}
-
+      taskDetails={task}
       project={projectName}
 
       refreshTasks={this.getData}
