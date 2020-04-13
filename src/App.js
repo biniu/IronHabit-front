@@ -1,7 +1,13 @@
 import React from 'react';
-import logo from './Misc/logo.svg';
-import './GlobalCSS/App.css';
 
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './GlobalCSS/App.css';
+import QuestsMainSite from './SubSites/Quests/QuestsMainSite'
 
 /**
  * render whole page
@@ -11,20 +17,11 @@ import './GlobalCSS/App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Route exact path="/">
+          <QuestsMainSite />
+        </Route>
+      </Router>
     </div>
   );
 }

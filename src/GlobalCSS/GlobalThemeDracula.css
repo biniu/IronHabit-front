@@ -1,12 +1,17 @@
+:root {
+    --main-bg-color: rgba(40, 42, 54, 1);
+    --support-bg-color: rgba(68, 71, 90, 1);
+}
+
 html,
 body {
     background-image: none !important;
-    background-color: rgba(40, 42, 54, 1) !important;
+    background-color: var(--main-bg-color) !important;
 }
 
 body * {
     color: rgba(248, 248, 242, 1) !important;
-    background-color: rgba(40, 42, 54, 1) !important;
+    background-color: var(--main-bg-color) !important;
 }
 
 a,
@@ -52,7 +57,7 @@ strong,
 }
 
 table {
-    background-color: rgba(40, 42, 54, 1) !important;
+    background-color: var(--main-bg-color) !important;
 }
 
 [id*="overlay"],
