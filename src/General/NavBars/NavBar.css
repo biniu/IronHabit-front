@@ -1,5 +1,7 @@
 
 
+a,
+a *,
 a:visited,
 a:visited * {
     color: rgba(180, 180, 180, 1) !important;

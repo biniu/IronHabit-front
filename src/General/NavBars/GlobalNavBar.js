@@ -29,8 +29,8 @@ export function GlobalNavBar() {
       <Navbar.Collapse id="basic-navbar-nav" className={'navBarDark'}>
         <Nav className={'navBarDark mr-auto'}>
           <Nav.Link className={'navLink'} href="/dashboard">Dashboard</Nav.Link>
-          <Nav.Link href="/projects">Projects</Nav.Link>
-          <Nav.Link href="/tasks">Tasks</Nav.Link>
+          <Nav.Link href="/campaigns">Campaigns</Nav.Link>
+          <Nav.Link href="/quests">Quests</Nav.Link>
           <Nav.Link href="/habits">Habits</Nav.Link>
           <Nav.Link href="/dailies">Dailies</Nav.Link>
         </Nav>
