@@ -1,23 +1,30 @@
-import React from 'react'
+import React from 'react';
 
 import {
   Navbar,
   Nav,
-  NavDropdown, Button, Form, InputGroup, FormControl,
+  Button,
+  Form,
+  InputGroup,
+  FormControl,
 } from 'react-bootstrap';
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCogs, faHome, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCogs, faHome, faSearch} from '@fortawesome/free-solid-svg-icons';
 
-import './NavBar.css'
+import './NavBar.css';
 
+/**
+ * Render navigation bar for whole site
+ * @return NavBar
+ * @constructor
+ */
 export function GlobalNavBar() {
-  const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
-
   return (
-
     <Navbar className={'navBarMain'}>
-      <Navbar.Brand href="#home"> <FontAwesomeIcon icon={faHome} />Iron Habit </Navbar.Brand>
+      <Navbar.Brand href="#home">
+        <FontAwesomeIcon icon={faHome} />Iron Habit
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={'navBarDark'}>
         <Nav className={'navBarDark mr-auto'}>
@@ -30,7 +37,9 @@ export function GlobalNavBar() {
         <Form inline>
           <InputGroup className="mb">
             <InputGroup.Prepend>
-              <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
+              <InputGroup.Text id="basic-addon1">
+                <FontAwesomeIcon icon={faSearch} />
+              </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
               placeholder="Search"
@@ -45,4 +54,4 @@ export function GlobalNavBar() {
   );
 }
 
-export default GlobalNavBar
+export default GlobalNavBar;
