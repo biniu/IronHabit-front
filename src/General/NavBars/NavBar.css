@@ -4,19 +4,20 @@ a,
 a *,
 a:visited,
 a:visited * {
-    color: rgba(180, 180, 180, 1) !important;
+  color: rgba(180, 180, 180, 1) !important;
 }
 
 .navBarDark {
-    background-color: var(--support-bg-color) !important;
+  background-color: var(--support-bg-color) !important;
 }
 
 .navBarMain {
-    background-color: var(--support-bg-color) !important;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+  background-color: var(--support-bg-color) !important;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  margin-top: 0px;
+  left: 50%;
 }
 
 
