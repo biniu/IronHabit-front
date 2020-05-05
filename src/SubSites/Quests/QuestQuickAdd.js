@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import {
   Container,
@@ -6,10 +6,7 @@ import {
   Form,
 } from 'react-bootstrap';
 
-import Moment from 'moment';
-
-import {PickDate} from '../../General/PickDate'
-
+import {PickDate} from '../../General/PickDate';
 
 export class QuestQuickAdd extends Component {
   constructor(props) {
@@ -21,30 +18,29 @@ export class QuestQuickAdd extends Component {
       task_deadline: '',
 
       // projectList: this.props.projectList,
-    }
-
+    };
   }
 
   handleUserInput = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({[e.target.name]: e.target.value});
   }
 
   handleDeadline = (deadline) => {
-    this.setState({ ["task_deadline"]: deadline });
+    this.setState({['task_deadline']: deadline});
   }
 
   projectEntrance = (project) => {
-    return <option value={project.id}>{project.name}</option>
+    return <option value={project.id}>{project.name}</option>;
   }
 
   listProjects = () => {
-    const optionList = this.props.projectList.map(project => {
+    const optionList = this.props.projectList.map((project) => {
       return this.projectEntrance(project);
-    })
+    });
     return (
       <Form.Control as="select" name="task_project"
-                    value={this.state.task_project}
-                    onChange={this.handleUserInput}
+        value={this.state.task_project}
+        onChange={this.handleUserInput}
       >
         {optionList}
         {/* <option value="2">2</option>
@@ -53,7 +49,7 @@ export class QuestQuickAdd extends Component {
         <option value="5">5</option> */}
 
       </Form.Control>
-    )
+    );
   }
 
   createTask = async (e) => {
@@ -70,8 +66,8 @@ export class QuestQuickAdd extends Component {
           priority: this.state.task_priority,
           project: this.state.task_project,
           deadline: this.state.task_deadline,
-        })
-      })
+        }),
+      });
 
       this.props.refreshTasks();
     }
@@ -79,34 +75,34 @@ export class QuestQuickAdd extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fluid className={'questAddForm'}>
         <Form >
           <Form.Group as={Row}>
             <Form.Control type="text" rows="12" required name="task_name"
-                          placeholder="Task name"
-                          value={this.state.task_name}
-                          onChange={this.handleUserInput}
+              placeholder="Quest name"
+              value={this.state.task_name}
+              onChange={this.handleUserInput}
             />
           </Form.Group>
 
-          <Form.Group as={Row} inline style={{ float: 'left' }}>
+          <Form.Group as={Row} inline style={{float: 'left'}}>
             <Form.Label >
               <button className="btn btn-primary"
-                      onClick={this.createTask}
+                onClick={this.createTask}
               >
-                Create task
+                Create quest
               </button>
             </Form.Label>
           </Form.Group>
 
-          <Form.Group as={Row} inline style={{ float: 'right' }}>
+          <Form.Group as={Row} inline style={{float: 'right'}}>
 
             <Form.Label >
               {<PickDate handleDate={this.handleDeadline} />}
             </Form.Label>
 
             <Form.Label >
-              {/*{this.listProjects()}*/}
+              {/* {this.listProjects()}*/}
               <Form.Control as="select" name="task_project"
                 value={this.state.task_project}
                 onChange={this.handleUserInput}
@@ -121,8 +117,8 @@ export class QuestQuickAdd extends Component {
 
             <Form.Label >
               <Form.Control as="select" name="task_difficulty"
-                            value={this.state.task_difficulty}
-                            onChange={this.handleUserInput}
+                value={this.state.task_difficulty}
+                onChange={this.handleUserInput}
               >
                 <option value="5">Difficulty</option>
                 <option value="1">1</option>
@@ -135,8 +131,8 @@ export class QuestQuickAdd extends Component {
 
             <Form.Label >
               <Form.Control as="select" name="task_priority"
-                            value={this.state.task_priority}
-                            onChange={this.handleUserInput}
+                value={this.state.task_priority}
+                onChange={this.handleUserInput}
               >
                 <option value="5">Priority</option>
                 <option value="1">1</option>
@@ -160,21 +156,8 @@ export class QuestQuickAdd extends Component {
           </Form.Group>
         </Form>
       </Container>
-    )
+    );
   }
 }
-
-// /**
-//  * Render navigation bar for whole site
-//  * @return NavBar
-//  * @constructor
-//  */
-// export function QuestQuickAdd() {
-//   return (
-//     <div>
-//
-//     </div>
-//   );
-// }
 
 export default QuestQuickAdd;
