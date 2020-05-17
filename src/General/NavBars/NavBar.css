@@ -4,7 +4,7 @@ a,
 a *,
 a:visited,
 a:visited * {
-  color: rgba(180, 180, 180, 1) !important;
+  color: var(--h-color) !important;
 }
 
 .navBarDark {
@@ -13,6 +13,7 @@ a:visited * {
 
 .navBarMain {
   background-color: var(--support-bg-color) !important;
+  font-size: 25px;
   width: 100vw;
   position: relative;
   margin-left: -50vw;
@@ -20,4 +21,21 @@ a:visited * {
   left: 50%;
 }
 
+.navElem {
+  background-color: var(--support-bg-color) !important;
+  font-size: 30px;
+  color: var(--h-color) !important;
+  font-weight: normal !important;
+}
 
+.navElem:hover {
+  background-color: var(--main-bg-color) !important;
+  color: var(--h-color) !important;
+}
+
+.navElemButtons {
+  background-color: var(--support-bg-color) !important;
+  color: var(--h-color) !important;
+  font-weight: normal !important;
+  border: var(--tabel-border-color) 1px solid;
+}

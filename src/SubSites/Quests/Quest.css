@@ -15,8 +15,17 @@
 }
 
 .quest-entrance {
-  border-bottom: rgba(255, 184, 108, 1) 1px solid;
+  border-bottom: var(--tabel-border-color) 1px solid;
   margin-bottom: 20px;
+  color: var(--text-color) !important;
+}
+
+.quest-entrance:hover {
+  border: 1px solid var(--link-color);
+}
+
+.quest-entrance-text {
+  color: var(--text-color) !important;
 }
 
 .checkbox {
@@ -30,14 +39,15 @@
   justify-content: center;
   align-items: center;
   transition: background-color .2s ease-in-out;
-  border: 2px solid rgba(241, 250, 140, 1);
+  border: 2px solid var(--h-color);
 }
 
 .checkbox:hover {
   background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(98, 114, 164, 1);
+  border: 1px solid var(--link-hover-color);
 }
 
+/*TODO - implemented checked int quests*/
 .checkbox-checked {
   color: rgba(98, 114, 164, 1);
   background: #fff;
@@ -45,7 +55,7 @@
 
 .navBar {
   background-color: var(--support-bg-color) !important;
-  border-top: rgba(255, 184, 108, 1) 1px solid;
+  border-top: var(--tabel-border-color) 1px solid;
   padding-top: 10px;
   min-height: 100%;
   height: 100%;
@@ -58,13 +68,19 @@
 .navElem {
   background-color: var(--support-bg-color) !important;
   font-size: 30px;
-  color: rgba(255, 184, 108, 1) !important;
+  color: var(--h-color) !important;
 }
 
 .navElem:hover {
-  border: 1px solid rgba(98, 114, 164, 1);
+  background-color: var(--main-bg-color) !important;
 }
 
+.navElemButtons {
+  background-color: var(--support-bg-color) !important;
+  color: var(--h-color) !important;
+  font-weight: normal !important;
+  border: var(--tabel-border-color) 1px solid;
+}
 
 
 .test1 {

@@ -1,6 +1,14 @@
 :root {
-    --main-bg-color: rgba(40, 42, 54, 1);
-    --support-bg-color: rgba(68, 71, 90, 1);
+  --main-bg-color: rgba(40, 42, 54, 1);
+  --support-bg-color: rgba(68, 71, 90, 1);
+  --link-color: rgba(80, 250, 123, 1);
+  --link-hover-color: rgba(241, 250, 140, 1);
+  --link-visited-color: rgba(98, 114, 164, 1);
+  --h-color: rgba(255, 184, 108, 1);
+  --h-menu-color: rgba(80, 250, 123, 1);
+  --tabel-border-color: rgba(255, 184, 108, 1);
+
+  --text-color: rgba(139, 233, 253, 1);
 }
 
 html,
@@ -10,13 +18,13 @@ body {
 }
 
 body * {
-    color: rgba(248, 248, 242, 1) !important;
+    /*color: rgba(248, 248, 242, 1) !important;*/
     background-color: var(--main-bg-color) !important;
 }
 
 a,
 a * {
-    color: rgba(80, 250, 123, 1) !important;
+    color: var(--link-color) !important;
     background-color: transparent !important;
 }
 
@@ -33,12 +41,12 @@ div[onclick]:hover,
 [role="menuitem"]:hover *,
 .link:hover,
 .link:hover * {
-    color: rgba(241, 250, 140, 1) !important;
+    color: var(--link-hover-color) !important;
 }
 
 a:visited,
 a:visited * {
-    color: rgba(98, 114, 164, 1) !important;
+    color: var(--link-visited-color) !important;
 }
 
 h1,
@@ -53,7 +61,7 @@ strong,
 [id*="header"],
 [class*="header"],
 [class*="header"] td {
-    color: rgba(255, 184, 108, 1) !important;
+    color: var(--h-color) !important;
 }
 
 table {

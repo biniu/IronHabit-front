@@ -66,6 +66,7 @@ export class QuestQuickAdd extends Component {
           priority: this.state.task_priority,
           project: this.state.task_project,
           deadline: this.state.task_deadline,
+          tags: this.state.task_tag,
         }),
       });
 
@@ -82,12 +83,13 @@ export class QuestQuickAdd extends Component {
               placeholder="Quest name"
               value={this.state.task_name}
               onChange={this.handleUserInput}
+              className={'navElemButtons'}
             />
           </Form.Group>
 
           <Form.Group as={Row} inline style={{float: 'left'}}>
             <Form.Label >
-              <button className="btn btn-primary"
+              <button className={'btn btn-primary navElemButtons'}
                 onClick={this.createTask}
               >
                 Create quest
@@ -97,7 +99,8 @@ export class QuestQuickAdd extends Component {
 
           <Form.Group as={Row} inline style={{float: 'right'}}>
 
-            <Form.Label >
+            {/* TODO - looks shhity*/}
+            <Form.Label className={'navElemButtons'}>
               {<PickDate handleDate={this.handleDeadline} />}
             </Form.Label>
 
@@ -106,6 +109,7 @@ export class QuestQuickAdd extends Component {
               <Form.Control as="select" name="task_project"
                 value={this.state.task_project}
                 onChange={this.handleUserInput}
+                className={'navElemButtons'}
               >
                 <option value="5">Project</option>
                 <option value="2">2</option>
@@ -119,6 +123,7 @@ export class QuestQuickAdd extends Component {
               <Form.Control as="select" name="task_difficulty"
                 value={this.state.task_difficulty}
                 onChange={this.handleUserInput}
+                className={'navElemButtons'}
               >
                 <option value="5">Difficulty</option>
                 <option value="1">1</option>
@@ -133,6 +138,7 @@ export class QuestQuickAdd extends Component {
               <Form.Control as="select" name="task_priority"
                 value={this.state.task_priority}
                 onChange={this.handleUserInput}
+                className={'navElemButtons'}
               >
                 <option value="5">Priority</option>
                 <option value="1">1</option>
@@ -142,16 +148,20 @@ export class QuestQuickAdd extends Component {
                 <option value="5">5</option>
               </Form.Control>
             </Form.Label>
-            {/*
-            <Form.Label  >
-              <Form.Control as="select">
-                <option>Tag</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <Form.Label >
+              <Form.Control as="select" name="task_tag"
+                            value={this.state.task_tag}
+                            onChange={this.handleUserInput}
+                            className={'navElemButtons'}
+              >
+                <option value="5">Priority</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </Form.Control>
-            </Form.Label> */}
+            </Form.Label>
 
           </Form.Group>
         </Form>

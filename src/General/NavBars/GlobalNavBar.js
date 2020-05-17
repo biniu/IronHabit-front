@@ -22,32 +22,34 @@ import './NavBar.css';
 export function GlobalNavBar() {
   return (
     <Navbar className={'navBarMain'}>
-      <Navbar.Brand href="#home">
+      <Navbar.Brand className={'navElem'} href="#home">
         <FontAwesomeIcon icon={faHome} />Iron Habit
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className={'navBarDark'}>
         <Nav className={'navBarDark mr-auto'}>
-          <Nav.Link className={'navLink'} href="/dashboard">Dashboard</Nav.Link>
-          <Nav.Link href="/campaigns">Campaigns</Nav.Link>
-          <Nav.Link href="/quests">Quests</Nav.Link>
-          <Nav.Link href="/habits">Habits</Nav.Link>
-          <Nav.Link href="/dailies">Dailies</Nav.Link>
+          <Nav.Link className={'navElem'} href="#">Dashboard</Nav.Link>
+          <Nav.Link className={'navElem'} href="#">Campaigns</Nav.Link>
+          <Nav.Link className={'navElem'} href="#">Quests</Nav.Link>
+          <Nav.Link className={'navElem'} href="#">Habits</Nav.Link>
+          <Nav.Link className={'navElem'} href="#">Dailies</Nav.Link>
         </Nav>
         <Form inline>
-          <InputGroup className="mb">
+          <InputGroup className={'mb'}>
             <InputGroup.Prepend>
-              <InputGroup.Text id="basic-addon1">
+              <InputGroup.Text id="basic-addon1" className={'navElemButtons'}>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl
+            <FormControl className={'navElemButtons'}
               placeholder="Search"
               aria-label="Search"
               aria-describedby="basic-addon1"
             />
           </InputGroup>
-          <Button ><FontAwesomeIcon icon={faCogs} /></Button>
+          <Button className={'navElemButtons'}>
+            <FontAwesomeIcon icon={faCogs} />
+          </Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>

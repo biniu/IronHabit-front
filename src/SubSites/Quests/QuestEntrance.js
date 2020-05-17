@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react';
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 
 import './Quest.css';
 
 export const QuestEntrance = (props) => {
-
   const questContent = <Fragment>
     <Col lg={1} className={'centered'}>
       <h1>
@@ -16,7 +15,7 @@ export const QuestEntrance = (props) => {
     <Col lg={8}>
       <Row>
         <Col lg={8}>
-          <h3 className={"text-left"}>
+          <h3 className={'text-left'}>
             {props.quest.name}
           </h3>
         </Col>
@@ -28,9 +27,9 @@ export const QuestEntrance = (props) => {
               </h6>
             </Col>
             <Col lg={6}>
-            <h6>
+              <h6>
               Created
-            </h6>
+              </h6>
             </Col>
           </Row>
 
@@ -62,7 +61,7 @@ export const QuestEntrance = (props) => {
       <Row>
         <Col>
           <h6>
-          {props.quest.project}
+            {props.quest.project}
           </h6>
         </Col>
       </Row>
@@ -74,7 +73,7 @@ export const QuestEntrance = (props) => {
         </Col>
       </Row>
     </Col>
-  </Fragment>
+  </Fragment>;
 
   return <Container fluid>
     <Row className={'quest-entrance'}>
@@ -83,9 +82,9 @@ export const QuestEntrance = (props) => {
       </Col>
 
       <Popup trigger={questContent} modal closeOnDocumentClick>
-        {/*{popUpContent}*/}
+        {/* {popUpContent}*/}
       </Popup>
 
     </Row>
-  </Container>
+  </Container>;
 };
