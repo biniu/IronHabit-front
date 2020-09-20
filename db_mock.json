@@ -1,0 +1,24 @@
+{
+  "quests": [
+    {
+      "id": "8c839c03-79ee-4f0b-9508-0daefc7ddbca",
+      "text": "Quest 1",
+      "complete": true
+    },
+    {
+      "id": "aac0e909-1840-4e7e-a1da-6fec80b767a8",
+      "text": "Quest 2",
+      "complete": false
+    },
+    {
+      "id": "3fd60332-8b87-4606-98ef-0b29ba6491b2",
+      "text": "3",
+      "complete": false
+    },
+    {
+      "id": "b416a548-eeb5-49b4-9ce6-f7f3686740e5",
+      "text": "Quest 4",
+      "complete": true
+    }
+  ]
+}
