@@ -32,10 +32,3 @@
   /*--rs-invisible-color: var(--dracula-comment) !important;*/
   /*--interactive-muted: var(--dracula-comment) !important;*/
 }
-
-
-html,
-body {
-  background-color: var(--dracula-background) !important;
-}
-
