@@ -4,7 +4,7 @@
   margin-top: 20px;
 }
 
-.questList {
+.questConrainer {
   /*border: black 1px solid;*/
 }
 
@@ -19,3 +19,36 @@
 
   font-size: large;
 }
+
+.questList {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.questEntrance {
+  list-style-type: none;
+  margin-top: 10px;
+
+  border-bottom: var(--dracula-comment) 1px solid;
+}
+
+.questEntrance:hover {
+  background-color: var(--dracula-comment);
+  border-radius: 8px;
+}
+
+.questButtonContainer {
+  float: right;
+}
+
+.questButton {
+  color: var(--dracula-current-line);
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+

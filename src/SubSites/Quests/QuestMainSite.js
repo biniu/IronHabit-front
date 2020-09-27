@@ -24,7 +24,7 @@ export default function QuestMainSite() {
       <Row className={'content'}>
         <Col lg={2}>
         </Col>
-        <Col lg={9} className={'questList'}>
+        <Col lg={9} className={'questConrainer'}>
           <h1>Quest List</h1>
           <QuestAddForm />
           <QuestList />
