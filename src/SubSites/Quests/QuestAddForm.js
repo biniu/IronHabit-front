@@ -4,7 +4,7 @@ import QuestContext from "./QuestContext";
 import {AddQuest, UpdateQuest} from "./QuestAPI"
 
 export default function QuestAddForm() {
-  const [todo, setTodo] = useState("");
+  const [quest, setQuest] = useState("");
   const {
     state: { currentTodo: currentQuest = {} },
     dispatch
@@ -13,9 +13,9 @@ export default function QuestAddForm() {
   useEffect(
     () => {
       if (currentQuest.text) {
-        setTodo(currentQuest.text);
+        setQuest(currentQuest.text);
       } else {
-        setTodo("");
+        setQuest("");
       }
     },
     [currentQuest.text]
@@ -24,21 +24,23 @@ export default function QuestAddForm() {
   const handleSubmit = async event => {
     event.preventDefault();
     if (currentQuest.text) {
-      const response = await UpdateQuest(todo, currentQuest.id);
+      const response = await UpdateQuest(quest, currentQuest.id);
       dispatch({ type: "UPDATE_QUEST", payload: response.data });
     } else {
-      const response = await AddQuest(todo);
+      const response = await AddQuest(quest);
       dispatch({ type: "ADD_QUEST", payload: response.data });
     }
-    setTodo("");
+    setQuest("");
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        onChange={event => setTodo(event.target.value)}
-        value={todo}
+        onChange={event => setQuest(event.target.value)}
+        value={quest}
+        placeholder={'finally learn a basic of HTML'}
+        className={'questForm'}
       />
     </form>
   );
