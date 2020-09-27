@@ -1,0 +1,21 @@
+
+
+.content {
+  margin-top: 20px;
+}
+
+.questList {
+  /*border: black 1px solid;*/
+}
+
+.questForm {
+  background-color: var(--dracula-comment);
+  color: var(--dracula-current-line);
+  border: none;
+  border-radius: 8px;
+
+  height: 100%;
+  width: 100%;
+
+  font-size: large;
+}

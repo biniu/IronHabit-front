@@ -8,7 +8,6 @@ export default function QuestList() {
   const {state, dispatch} = useContext(QuestContext);
   return (
     <div>
-      <h1>Quest List</h1>
       <ul>
         {state.quests.map(quest => (
           <li

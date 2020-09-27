@@ -6,6 +6,8 @@ import {
   Col,
 } from 'react-bootstrap';
 
+import './Quest.css'
+
 import QuestAddForm from "./QuestAddForm";
 import QuestList from "./QuestList";
 
@@ -15,15 +17,15 @@ export default function QuestMainSite() {
   return (
     //style={{backgroundColor: 'blue'}}
     <Container fluid >
-      <Row >
+      <Row>
         <Col lg={12}>
-          MENU
         </Col>
       </Row>
-      <Row>
+      <Row className={'content'}>
         <Col lg={2}>
         </Col>
-        <Col lg={9}>
+        <Col lg={9} className={'questList'}>
+          <h1>Quest List</h1>
           <QuestAddForm />
           <QuestList />
         </Col>
