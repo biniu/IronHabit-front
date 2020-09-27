@@ -1,9 +1,9 @@
 import React, { useContext, useReducer, useEffect } from "react";
 
-import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './GlobalCSS/App.css';
 
-import QuestList from "./SubSites/Quests/QuestList"
-import QuestAddForm from "./SubSites/Quests/QuestAddForm"
+import QuestMainSite from "./SubSites/Quests/QuestMainSite"
 
 import {GetQuests} from "./SubSites/Quests/QuestAPI"
 import QuestContext from "./SubSites/Quests/QuestContext"
@@ -26,8 +26,7 @@ const App = () => {
 
   return (
     <QuestContext.Provider value={{ state, dispatch }}>
-      <QuestAddForm />
-      <QuestList />
+      <QuestMainSite />
     </QuestContext.Provider>
   );
 }

@@ -1,0 +1,15 @@
+@import "DraculaTheme.css";
+
+.App {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 100% !important;
+
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
