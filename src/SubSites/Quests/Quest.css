@@ -37,6 +37,15 @@
   border-radius: 8px;
 }
 
+.questEntranceDone {
+  list-style-type: none;
+  margin-top: 10px;
+
+  border-bottom: var(--dracula-comment) 1px solid;
+  text-decoration: line-through;
+  color: var(--dracula-comment);
+}
+
 .questButtonContainer {
   float: right;
 }
