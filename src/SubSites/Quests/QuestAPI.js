@@ -38,11 +38,11 @@ export async function UpdateQuest(todo, QuestID) {
   );
 }
 
-export async function CompleteQuest(QuestID) {
+export async function CompleteQuest(QuestID, QuestStatus) {
   return await axios.patch(
     `http://localhost:3001/quests/${QuestID}`,
     {
-      complete: true
+      complete: QuestStatus
     }
   );
 }

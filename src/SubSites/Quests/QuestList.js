@@ -16,7 +16,7 @@ export default function QuestList() {
         {state.quests.map(quest => (
           <li
             key={quest.id}
-            className="questEntrance"
+            className={quest.complete ? "questEntranceDone" : "questEntrance"}
           >
             <span>
               {quest.text}
@@ -42,8 +42,8 @@ export default function QuestList() {
               <button
                 className={'questButton'}
                 onClick={async () => {
-                  await CompleteQuest(quest.id)
-                  dispatch({ type: "TOGGLE_QUEST", payload: quest });
+                  const response = await CompleteQuest(quest.id, !quest.complete)
+                  dispatch({ type: "TOGGLE_QUEST", payload: response.data });
                 }}
               >
                 <FontAwesomeIcon icon={faCheck} />
