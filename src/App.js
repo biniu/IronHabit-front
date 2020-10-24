@@ -1,28 +1,33 @@
-import React from 'react';
+import React, { useContext, useReducer, useEffect } from "react";
 
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './GlobalCSS/App.css';
-import QuestsMainSite from './SubSites/Quests/QuestsMainSite'
 
-/**
- * render whole page
- * @return {*}
- * @constructor
- */
-function App() {
+import QuestMainSite from "./SubSites/Quests/QuestMainSite"
+
+import {GetQuests} from "./SubSites/Quests/QuestAPI"
+import QuestContext from "./SubSites/Quests/QuestContext"
+import QuestReducer from  "./SubSites/Quests/QuestReducer"
+
+const App = () => {
+  const initialState = useContext(QuestContext);
+  const [state, dispatch] = useReducer(QuestReducer, initialState);
+  const savedQuests = GetQuests();
+
+  useEffect(
+    () => {
+      dispatch({
+        type: "GET_QUEST",
+        payload: savedQuests
+      });
+    },
+    [savedQuests]
+  );
+
   return (
-    <div className="App">
-      <Router>
-        <Route exact path="/">
-          <QuestsMainSite />
-        </Route>
-      </Router>
-    </div>
+    <QuestContext.Provider value={{ state, dispatch }}>
+      <QuestMainSite />
+    </QuestContext.Provider>
   );
 }
 
