@@ -11,6 +11,8 @@ import './Quest.css'
 import QuestAddForm from "./QuestAddForm";
 import QuestList from "./QuestList";
 
+import QuestListDnD from './QuestListDnD';
+
 
 
 export default function QuestMainSite() {
@@ -26,8 +28,9 @@ export default function QuestMainSite() {
         </Col>
         <Col lg={9} className={'questConrainer'}>
           <h1>Quest List</h1>
-          <QuestAddForm />
-          <QuestList />
+          {/*<QuestAddForm />*/}
+          {/*<QuestList />*/}
+          <QuestListDnD />
         </Col>
         <Col lg={1}>
         </Col>
