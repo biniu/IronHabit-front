@@ -26,10 +26,13 @@ export default function QuestReducer(state, action) {
         quests: toggledTodos
       };
     case "UPDATE_QUEST":
+      console.log("UPDATE_QUEST ")
+      console.log(action)
       const updatedTodo = { ...action.payload };
-      const updatedTodoIndex = state.quests.findIndex(
-        t => t.id === state.currentTodo.id
-      );
+      const updatedTodoIndex = action.payload.id;
+      // const updatedTodoIndex = state.quests.findIndex(
+      //   t => t.id === state.currentTodo.id
+      // );
       const updatedTodos = [
         ...state.quests.slice(0, updatedTodoIndex),
         updatedTodo,

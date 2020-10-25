@@ -46,6 +46,10 @@
   color: var(--dracula-comment);
 }
 
+.questTextContainer {
+  display: inline;
+}
+
 .questButtonContainer {
   float: right;
 }
@@ -58,6 +62,7 @@
   cursor:pointer;
   overflow: hidden;
   outline:none;
+  float: right;
 }
 
 

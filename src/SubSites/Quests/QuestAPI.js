@@ -29,20 +29,21 @@ export async function AddQuest(todo) {
   );
 }
 
-export async function UpdateQuest(todo, QuestID) {
-  return await axios.patch(
-    `http://localhost:3001/quests/${QuestID}`,
-    {
-      text: todo
-    }
-  );
-}
-
 export async function CompleteQuest(QuestID, QuestStatus) {
   return await axios.patch(
     `http://localhost:3001/quests/${QuestID}`,
     {
       complete: QuestStatus
+    }
+  );
+}
+
+export async function UpdateQuest(todo, QuestID) {
+  {console.log("UpdateQuest " + todo + " " + QuestID)}
+  return await axios.patch(
+    `http://localhost:3001/quests/${QuestID}`,
+    {
+      text: todo
     }
   );
 }
